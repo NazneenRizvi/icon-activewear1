@@ -155,8 +155,8 @@ export const Navbar: React.FC<NavbarProps> = ({
 
       {/* 3. Main Brand Navigation Bar */}
       <div className="max-w-7xl mx-auto px-3 sm:px-8 py-3 sm:py-3.5 flex items-center justify-between gap-2">
-        {/* Left Mobile Controls: Hamburger & SHOP Button */}
-        <div className="flex items-center gap-1.5 sm:gap-2">
+        {/* Mobile menu control */}
+        <div className="flex items-center shrink-0 md:hidden">
           {/* Mobile menu hamburger (opens navigation drawer without redirecting) */}
           <button
             type="button"
@@ -172,28 +172,6 @@ export const Navbar: React.FC<NavbarProps> = ({
           >
             {isMobileMenuOpen ? <X className="w-5 h-5" /> : <Menu className="w-5 h-5" />}
           </button>
-
-          {/* Mobile SHOP Button (Directly routes to /shop) */}
-          <button
-            type="button"
-            onClick={(e) => {
-              e.preventDefault();
-              e.stopPropagation();
-              if (onNavigateRoute) {
-                onNavigateRoute('/shop');
-              } else {
-                handleNavClick('catalog-section');
-              }
-            }}
-            className={`md:hidden px-2.5 py-1 text-[11px] font-black uppercase tracking-wider transition-all shrink-0 cursor-pointer border ${
-              currentRoute === '/shop'
-                ? 'bg-black text-white border-black'
-                : 'bg-white text-black border-neutral-300 hover:border-black active:scale-95'
-            }`}
-            aria-label="Go to Shop"
-          >
-            SHOP
-          </button>
         </div>
 
         {/* Brand Logo: ICON ACTIVEWEAR */}
@@ -204,7 +182,7 @@ export const Navbar: React.FC<NavbarProps> = ({
             if (onNavigateRoute) onNavigateRoute('/');
             else handleNavClick('catalog-section');
           }}
-          className="text-base sm:text-xl md:text-2xl font-black tracking-wider sm:tracking-widest font-display text-neutral-900 uppercase truncate cursor-pointer text-left"
+          className="text-[10px] min-[360px]:text-xs min-[390px]:text-sm sm:text-xl md:text-2xl font-black tracking-tight sm:tracking-widest font-display text-neutral-900 uppercase whitespace-nowrap shrink-0 cursor-pointer text-left"
         >
           <span>ICON ACTIVEWEAR</span>
         </button>
@@ -241,7 +219,7 @@ export const Navbar: React.FC<NavbarProps> = ({
         </nav>
 
         {/* Right Action Icons: Search, Wishlist, User, Cart */}
-        <div className="flex items-center gap-1.5 sm:gap-3.5 shrink-0">
+        <div className="flex items-center gap-0 sm:gap-3.5 shrink-0">
           <button
             onClick={() => setIsSearchOpen(true)}
             className="p-1.5 text-neutral-700 hover:text-black transition-colors cursor-pointer"
@@ -439,8 +417,6 @@ export const Navbar: React.FC<NavbarProps> = ({
                       <UserIcon className="w-4 h-4" />
                       <span>Customer Sign In / Join</span>
                     </button>
-
-
                   </div>
                 )}
               </div>
